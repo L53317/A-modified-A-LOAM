@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(aloam_velodyne)
 
+set( CMAKE_CXX_STANDARD 14) # add according to https://www.guyuehome.com/34328
+
 set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_FLAGS "-std=c++11")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
@@ -25,14 +27,15 @@ find_package(Ceres REQUIRED)
 
 include_directories(
   include
-	${catkin_INCLUDE_DIRS} 
-	${PCL_INCLUDE_DIRS}
+  ${catkin_INCLUDE_DIRS}
+  ${PCL_INCLUDE_DIRS}
   ${CERES_INCLUDE_DIRS}
-  ${OpenCV_INCLUDE_DIRS})
+  ${OpenCV_INCLUDE_DIRS}
+)
 
 catkin_package(
   CATKIN_DEPENDS geometry_msgs nav_msgs roscpp rospy std_msgs
-  DEPENDS EIGEN3 PCL 
+  DEPENDS EIGEN3 PCL
   INCLUDE_DIRS include
 )
 

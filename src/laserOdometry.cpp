@@ -282,8 +282,9 @@ int main(int argc, char **argv)
 
                     //ceres::LossFunction *loss_function = NULL;
                     ceres::LossFunction *loss_function = new ceres::HuberLoss(0.1);
-                    ceres::LocalParameterization *q_parameterization =
-                        new ceres::EigenQuaternionParameterization();
+                    ceres::Manifold *q_parameterization =
+                        // new ceres::EigenQuaternionParameEigenQuaternionManifoldterization(); // deprecated
+                        new ceres::EigenQuaternionManifold(); // if used ceres-sover 2.2.0 and later
                     ceres::Problem::Options problem_options;
 
                     ceres::Problem problem(problem_options);
@@ -510,6 +511,7 @@ int main(int argc, char **argv)
             // publish odometry
             nav_msgs::Odometry laserOdometry;
             laserOdometry.header.frame_id = "/camera_init";
+            // laserOdometry.header.frame_id = "camera_init";
             laserOdometry.child_frame_id = "/laser_odom";
             laserOdometry.header.stamp = ros::Time().fromSec(timeSurfPointsLessFlat);
             laserOdometry.pose.pose.orientation.x = q_w_curr.x();
@@ -527,6 +529,7 @@ int main(int argc, char **argv)
             laserPath.header.stamp = laserOdometry.header.stamp;
             laserPath.poses.push_back(laserPose);
             laserPath.header.frame_id = "/camera_init";
+            // laserPath.header.frame_id = "camera_init";
             pubLaserPath.publish(laserPath);
 
             // transform corner features and plane features to the scan end point
