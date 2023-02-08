@@ -18,7 +18,7 @@ ROS Kinetic or Melodic. [ROS Installation](http://wiki.ros.org/ROS/Installation)
 Follow [Ceres Installation](http://ceres-solver.org/installation.html).
 
 ### 1.3. **PCL**
-Follow [PCL Installation](http://www.pointclouds.org/downloads/linux.html).
+Follow [PCL Installation](https://pointclouds.org/downloads/#linux).
 
 
 ## 2. Build A-LOAM
