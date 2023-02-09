@@ -26,7 +26,7 @@ Clone the repository and catkin_make:
 
 ```
     cd ~/catkin_ws/src
-    git clone https://github.com/HKUST-Aerial-Robotics/A-LOAM.git
+    git clone https://github.com/L53317/A-modified-A-LOAM.git
     cd ../
     catkin_make
     source ~/catkin_ws/devel/setup.bash
